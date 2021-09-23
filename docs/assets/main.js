@@ -131,18 +131,16 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       document.querySelector(".loader").classList.toggle("active");
     }, 800);
-    px
-      .setScale(blocksize.value)
+    px.setPixel(blocksize.value)
       .setPalette(paletteList[currentPalette])
       .draw()
       .pixelate();
-      
-      greyscale.checked ? px.convertGrayscale() : null;
-      palette.checked ? px.convertPalette() : null;
-      maxheight.value ? px.setMaxHeight(maxheight.value).resizeImage() : null;
-      maxwidth.value ? px.setMaxWidth(maxwidth.value).resizeImage() : null;
-  };
 
+    greyscale.checked ? px.convertGrayscale() : null;
+    palette.checked ? px.convertPalette() : null;
+    maxheight.value ? px.setMaxHeight(maxheight.value).resizeImage() : null;
+    maxwidth.value ? px.setMaxWidth(maxwidth.value).resizeImage() : null;
+  };
 
   const makePaletteGradient = () => {
     //create palette

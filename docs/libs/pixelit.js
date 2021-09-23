@@ -106,12 +106,15 @@ class pixelit {
    * @param {int} scale set pixelate scale [0...50]
    */
   setScale(scale) {
-    this.scale = scale > 0 && scale <= 50 ? scale * 0.01 : 8 * 0.01;
+    console.log(scale);
+    this.scale = scale;
     return this;
   }
 
   setPixel(pixel) {
-    const scale = Math.floor(this.maxWidth / pixel);
+    const width = this.drawfrom.width;
+    const height = this.drawfrom.height;
+    const scale = pixel / Math.min(width, height);
     return this.setScale(scale);
   }
 
