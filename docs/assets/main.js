@@ -1,5 +1,8 @@
 //create object
-const px = new pixelit({ from: document.getElementById("pixelitimg") });
+image = document.getElementById("pixelitimg");
+image.crossOrigin = "Anonymous";
+const px = new pixelit({ from: image });
+console.log({ px });
 
 //stuff for webpage functionality
 const paletteList = [

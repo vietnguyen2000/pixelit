@@ -106,15 +106,12 @@ class pixelit {
    * @param {int} scale set pixelate scale [0...50]
    */
   setScale(scale) {
-    console.log(scale);
-    this.scale = scale;
+    this.scale = scale > 0 && scale <= 50 ? scale * 0.01 : 8 * 0.01;
     return this;
   }
 
   setPixel(pixel) {
-    const width = this.drawfrom.width;
-    const height = this.drawfrom.height;
-    const scale = pixel / Math.min(width, height);
+    const scale = Math.floor(this.maxWidth / pixel);
     return this.setScale(scale);
   }
 
@@ -251,6 +248,7 @@ class pixelit {
   convertPalette() {
     const w = this.drawto.width;
     const h = this.drawto.height;
+    console.log({ w, h });
     var imgPixels = this.ctx.getImageData(0, 0, w, h);
     for (var y = 0; y < imgPixels.height; y++) {
       for (var x = 0; x < imgPixels.width; x++) {
